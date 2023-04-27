@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Caricamento JSON</title>
+   </head>
+   <body>
+      <h1>Caricamento JSON</h1>
+      <div id="container"></div>
+      <script>
+         // Utilizza la funzione fetch() per ottenere i dati dal file JSON
+         fetch("https://raw.githubusercontent.com/salvo45/classe/main/file.json")
+            .then(response => response.json()) // Converte la risposta in un oggetto JSON
+            .then(data => {
+               // Crea i div dinamicamente utilizzando i dati ottenuti dal file JSON
+               const div1 = document.createElement("div");
+               div1.innerHTML = data.div1;
+               const div2 = document.createElement("div");
+               div2.innerHTML = data.div2;
+               
+               // Aggiungi i div al container nella pagina HTML
+               const container = document.getElementById("container");
+               container.appendChild(div1);
+               container.appendChild(div2);
+            })
+            .catch(error => console.error(error)); // Gestisci eventuali errori
+      </script>
+   </body>
+</html>
